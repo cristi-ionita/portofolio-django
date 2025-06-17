@@ -1,0 +1,184 @@
+/* General container styling */
+.container {
+  display: flex;                   /* Use flexbox for layout */
+  max-width: 1200px;               /* Max width of container */
+  margin: 40px auto;               /* Center container with vertical margin */
+  gap: 40px;                      /* Space between left and right panels */
+  background: #121212;             /* Very dark background */
+  border-radius: 16px;             /* Rounded corners */
+  padding: 30px;                  /* Inner padding */
+  box-shadow: 0 8px 32px rgba(255, 140, 0, 0.3); /* Soft glowing shadow */
+  color: #141313;                 /* Text color (dark, but used on lighter backgrounds) */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+  min-height: 600px;               /* Minimum height */
+}
+
+/* Left panel: number selection grid */
+.left-panel {
+  flex: 1;                        /* Takes equal width as right panel */
+  background: #1f1f1f;            /* Slightly lighter dark background */
+  border-radius: 14px;            /* Rounded corners */
+  padding: 25px;                  /* Padding inside panel */
+  box-shadow: 0 4px 12px rgba(0, 255, 115, 0.25); /* Greenish glow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;            /* Center content horizontally */
+}
+
+/* Right panel: ticket and drawn numbers */
+.right-panel {
+  flex: 1;
+  background: #1f1f1f;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.25); /* Orange glow */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;                     /* Vertical gap between children */
+  align-items: center;
+}
+
+/* Headings styling */
+h2 {
+  color: #e4eee7;                /* Light greenish text */
+  margin-bottom: 20px;
+  text-shadow: 0 0 5px #d0d6d0; /* Soft glow effect */
+}
+
+/* Number selection grid styling */
+#number-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 45px); /* 7 columns each 45px wide */
+  gap: 12px;
+  max-width: 350px;
+  user-select: none;             /* Disable text selection */
+}
+
+/* Individual number buttons in the grid */
+.number {
+  width: 40px;
+  height: 40px;
+  background-color: #251717;     /* Dark reddish background */
+  border-radius: 50%;            /* Circular shape */
+  text-align: center;
+  line-height: 45px;             /* Vertically center text */
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease; /* Smooth hover effects */
+  box-shadow: 0 2px 4px #e4e2e066; /* Soft shadow */
+  color: #e6d6d4;                /* Light text */
+}
+
+/* Hover effect for number buttons */
+.number:hover {
+  background-color: #ff3c00;     /* Bright orange background */
+  transform: scale(1.1);         /* Slightly larger */
+  box-shadow: 0 0 10px #b41f05;  /* Strong glow */
+}
+
+/* Styling for selected numbers */
+.number.selected {
+  background-color: #ff1e00;     /* Intense red background */
+  color: #fff;                   /* White text */
+  font-weight: 900;              /* Very bold */
+  box-shadow: 0 0 15px #ff9500;  /* Bright orange glow */
+  transform: scale(1.2);         /* Larger */
+}
+
+/* Ticket grid displaying chosen numbers */
+#ticket-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 800px;
+}
+
+/* Drawn numbers grid */
+#drawn-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 800px;
+}
+
+/* Result message styling */
+#result-message {
+  margin-top: 25px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #eb0611;                /* Bright red color for emphasis */
+  min-height: 50px;              /* Reserve space */
+  text-align: center;
+}
+
+/* Buttons (draw, reset) styling */
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #ff9500;     /* Orange background */
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 160px;
+  box-shadow: 0 3px 7px rgba(255, 140, 0, 0.8);
+  color: #121212;                /* Dark text */
+  user-select: none;             /* Disable text selection */
+}
+
+/* Button hover effect (only if not disabled) */
+button:hover:not(:disabled) {
+  background-color: #ff6f00;     /* Darker orange */
+  box-shadow: 0 0 12px #ff9500;  /* Glow */
+}
+
+/* Disabled buttons styling */
+button:disabled {
+  background-color: #555;        /* Gray background */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;      /* Stack panels vertically */
+  }
+  .left-panel, .right-panel {
+    max-width: 100%;
+    min-height: auto;
+  }
+  #number-grid, #ticket-grid, #drawn-grid {
+    max-width: 100%;
+    justify-content: center;     /* Center grids */
+  }
+}
+
+/* Body styling */
+body {
+  margin: 0;
+  background-color: #121212;     /* Very dark background */
+  color: #eee;                   /* Light text for contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Common styling for ticket and drawn numbers */
+.ticket-number, .drawn-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9a826;     /* Bright orange background */
+  color: #000;                   /* Black text */
+  font-weight: bold;
+  margin: 5px;
+  padding: 0;
+  border-radius: 50%;            /* Circular shape */
+  font-size: 1.6rem;
+  width: 60px;
+  height: 60px;
+  user-select: none;             /* Disable text selection */
+  box-shadow: 0 0 7px #f9a826;  /* Soft orange glow */
+}

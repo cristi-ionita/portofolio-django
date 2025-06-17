@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loto 6/49</title>
+  <link rel="stylesheet" href="{% static 'matrix/loto.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <!-- Left panel: Number selection grid -->
+    <div class="left-panel">
+      <h2>Alege 6 numere</h2>
+      <div id="number-grid"></div> <!-- Will contain buttons 1-49 -->
+      <button id="draw-btn" disabled>Extrage numerele</button> <!-- Disabled until 6 numbers are selected -->
+      <button id="reset-btn">Joacă din nou</button>
+    </div>
+
+    <!-- Right panel: Ticket and drawn numbers -->
+    <div class="right-panel">
+      <div id="ticket-section">
+        <h2>Biletul tău</h2>
+        <div id="ticket-grid"></div> <!-- Selected numbers displayed here -->
+        <div id="result-message"></div> <!-- Result message after drawing -->
+      </div>
+      <div id="draw-section">
+        <h2>Numere extrase</h2>
+        <div id="drawn-grid"></div> <!-- Drawn numbers displayed here -->
+      </div>
+    </div>
+  </div>
+
+<script>
+  // DOM elements for different UI parts
+  const numberGrid = document.getElementById('number-grid');
+  const ticketGrid = document.getElementById('ticket-grid');
+  const drawnGrid = document.getElementById('drawn-grid');
+  const drawBtn = document.getElementById('draw-btn');
+  const resetBtn = document.getElementById('reset-btn');
+  const resultMessage = document.getElementById('result-message');
+
+  let selectedNumbers = []; // Store user-selected numbers
+
+  // Build the grid with numbers 1 to 49
+  function buildNumberGrid() {
+    numberGrid.innerHTML = '';
+    for(let i = 1; i <= 49; i++) {
+      const btn = document.createElement('div');
+      btn.className = 'number';
+      btn.textContent = i;
+      btn.addEventListener('click', () => toggleSelect(i, btn));
+      numberGrid.appendChild(btn);
+    }
+  }
+
+  // Select or deselect a number when clicked
+  function toggleSelect(num, elem) {
+    if(selectedNumbers.includes(num)) {
+      // If already selected, remove it
+      selectedNumbers = selectedNumbers.filter(n => n !== num);
+      elem.classList.remove('selected');
+    } else {
+      // Otherwise, add if less than 6 selected
+      if(selectedNumbers.length < 6) {
+        selectedNumbers.push(num);
+        elem.classList.add('selected');
+      }
+    }
+    // Enable draw button only when exactly 6 numbers are selected
+    drawBtn.disabled = selectedNumbers.length !== 6;
+
+    // Update ticket display and clear previous draw/results
+    renderTicket();
+    clearDrawn();
+    clearResult();
+  }
+
+  // Show selected numbers on the ticket
+  function renderTicket() {
+    ticketGrid.innerHTML = '';
+    selectedNumbers.sort((a,b) => a - b).forEach(num => {
+      const div = document.createElement('div');
+      div.className = 'ticket-number';
+      div.textContent = num;
+      ticketGrid.appendChild(div);
+    });
+  }
+
+  // Randomly draw 6 unique numbers
+  function drawNumbers() {
+    const pool = Array.from({length: 49}, (_,i) => i+1);
+    let drawn = [];
+    while(drawn.length < 6) {
+      const idx = Math.floor(Math.random() * pool.length);
+      drawn.push(pool.splice(idx, 1)[0]);
+    }
+    drawn.sort((a,b) => a - b);
+    renderDrawn(drawn);
+    showResult(drawn);
+    drawBtn.disabled = true; // Disable draw after drawing once
+  }
+
+  // Show drawn numbers in the UI
+  function renderDrawn(nums) {
+    drawnGrid.innerHTML = '';
+    nums.forEach(num => {
+      const div = document.createElement('div');
+      div.className = 'drawn-number';
+      div.textContent = num;
+      drawnGrid.appendChild(div);
+    });
+  }
+
+  // Calculate and show result message based on matched numbers
+  function showResult(drawn) {
+    const matched = selectedNumbers.filter(n => drawn.includes(n));
+    let msg = '';
+
+    if (matched.length === 0) {
+      msg = 'Nu ai ghicit nici un număr.'; // No matches
+    } else {
+      // Show how many and which numbers were guessed
+      msg = `Ai ghicit ${matched.length} număr${matched.length > 1 ? 'e' : ''}: ${matched.join(', ')}`;
+
+      // Add message depending on number of matches
+      if (matched.length < 3) {
+        msg += ' - Bilet necastigator.';
+      } else if (matched.length === 3) {
+        msg += ' - Ai castigat 30 $!';
+      } else if (matched.length === 4) {
+        msg += ' - Ai castigat 180 $!';
+      } else if (matched.length === 5) {
+        msg += ' - Felicitări! Ai castigat 4567 $!';
+      } else if (matched.length === 6) {
+        msg += ' - ********** AI CÂȘTIGAT PREMIUL CEL MARE **********';
+      }
+    }
+
+    resultMessage.textContent = msg;
+  }
+
+  // Clear drawn numbers display
+  function clearDrawn() {
+    drawnGrid.innerHTML = '';
+  }
+
+  // Clear result message display
+  function clearResult() {
+    resultMessage.textContent = '';
+  }
+
+  // Reset game state to start over
+  function resetGame() {
+    selectedNumbers = [];
+    buildNumberGrid();
+    renderTicket();
+    clearDrawn();
+    clearResult();
+    drawBtn.disabled = true;
+  }
+
+  // Attach event listeners to buttons
+  drawBtn.addEventListener('click', drawNumbers);
+  resetBtn.addEventListener('click', resetGame);
+
+  // Initialize the number grid on page load
+  buildNumberGrid();
+</script>
+</body>
+</html>

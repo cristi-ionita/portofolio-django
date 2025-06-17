@@ -1,0 +1,127 @@
+/* Base styling for the entire page */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif; /* Clean, modern font */
+  background: linear-gradient(135deg, #e0f7fa, #80deea); /* Soft diagonal gradient */
+  color: #333; /* Dark text for readability */
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  padding: 20px;
+}
+
+/* Top navigation bar for the weather app */
+.weather-navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Space between nav items */
+  align-items: center;
+  background-color: #00838f; /* Teal color */
+  padding: 10px 20px;
+  color: white;
+}
+
+/* Navigation links inside navbar */
+.weather-navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Clock display inside the navbar */
+.weather-clock {
+  font-weight: 500;
+  font-size: 0.85rem;
+  white-space: nowrap; /* Prevents line breaks */
+}
+
+/* Main container for the weather content */
+.weather-container {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Form input for entering city name */
+.city-form input {
+  padding: 10px;
+  width: 60%;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+/* Submit button in city form */
+.city-form button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #006064; /* Darker teal */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Container for current weather data */
+.current-weather {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Temperature display */
+.temp {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+/* Weather icon for current conditions */
+.current-weather-icon {
+  width: 32px;  /* Smaller icon */
+  height: 32px;
+  filter: drop-shadow(0 0 2px #7ff36f); /* Green glow */
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease; /* Smooth scale on hover */
+}
+
+.current-weather-icon:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Horizontal scroll container for forecast cards */
+.forecast-scroll {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling */
+  gap: 6px;
+  padding: 10px 0;
+  width: 100%;
+  justify-content: center;
+}
+
+/* Forecast card styling */
+.forecast-card {
+  background-color: white;
+  min-width: 70px;  /* Smaller width for compact layout */
+  padding: 6px;
+  border-radius: 10px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0; /* Prevents card from shrinking */
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Forecast weather icon */
+.forecast-icon {
+  width: 24px;  /* Smaller icon */
+  height: 24px;
+  filter: drop-shadow(0 0 1px #7ff36f); /* Subtle glow */
+  margin-bottom: 6px;
+}

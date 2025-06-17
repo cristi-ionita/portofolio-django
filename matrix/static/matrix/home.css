@@ -1,0 +1,75 @@
+/* Fullscreen canvas background */
+#matrix {
+  position: fixed;           /* Keeps the canvas fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;               /* Full width of the viewport */
+  height: 100%;              /* Full height of the viewport */
+  z-index: -1;               /* Sends the canvas behind all other content */
+  background: black;         /* Sets the background color to black */
+}
+
+/* Text overlay centered on the page */
+.overlay-text {
+  color: #00ff00;            /* Matrix-style green text */
+  text-align: center;        /* Center-align the text */
+  padding: 80px 20px;        /* Spacing inside the element (top/bottom, left/right) */
+  font-family: 'Courier New', Courier, monospace;  /* Monospace font for terminal-like style */
+  max-width: 900px;          /* Limits text width for better readability */
+  margin: auto;              /* Centers the element horizontally */
+}
+
+.overlay-text h1 {
+  font-size: 3rem;           /* Large heading size */
+  margin-bottom: 20px;       /* Space below the heading */
+  text-shadow: 0 0 8px #00ff00; /* Glowing green shadow effect */
+}
+
+.overlay-text p {
+  font-size: 1.2rem;         /* Paragraph text size */
+  line-height: 1.6;          /* Line spacing for readability */
+  margin-bottom: 15px;       /* Space below each paragraph */
+  text-shadow: 0 0 5px #007f00; /* Slight green shadow for depth */
+}
+
+/* Contact section styling */
+#contact-section {
+  text-align: center;        /* Centers the contact content */
+  margin-top: 40px;          /* Adds spacing above the section */
+  color: #00ffcc;            /* Cyan text color */
+  font-family: 'Courier New', Courier, monospace;  /* Consistent terminal-style font */
+}
+
+#contact-section .email {
+  font-size: 1.2rem;         /* Email text size */
+  font-weight: bold;         /* Makes the text bold */
+  margin-bottom: 10px;       /* Spacing below the email line */
+  text-shadow: 0 0 4px #00ffff; /* Cyan glow effect */
+}
+
+#contact-section .lets-work {
+  font-size: 3.4rem;         /* Very large attention-grabbing text */
+  font-weight: bold;         /* Emphasizes importance */
+  color: #f30707;            /* Bright red for urgency or action */
+  margin-top: 70px;          /* Adds top spacing to separate from other content */
+  text-shadow: 0 0 6px #e40c0c; /* Red glow for dramatic effect */
+}
+
+/* Responsive adjustments for smaller screens (max width: 768px) */
+@media (max-width: 768px) {
+  .overlay-text {
+    padding: 40px 15px;      /* Reduced padding for smaller screens */
+  }
+
+  .overlay-text h1 {
+    font-size: 2.2rem;       /* Smaller heading size on mobile */
+  }
+
+  .overlay-text p {
+    font-size: 1rem;         /* Slightly smaller paragraph text */
+  }
+
+  #contact-section .lets-work {
+    font-size: 1.2rem;       /* Much smaller call-to-action text on small devices */
+  }
+}

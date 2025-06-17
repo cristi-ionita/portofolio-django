@@ -1,0 +1,67 @@
+/* Navbar container fixed to top of the page */
+.navbar {
+  position: fixed;                  /* Stays at the top even when scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;                      /* Full width of the viewport */
+  background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+  z-index: 100;                     /* Appears above most other elements */
+  padding: 10px 0;                  /* Vertical padding */
+  display: flex;                    /* Flex container for layout */
+  justify-content: space-between;  /* Distribute space between nav links and clock */
+  align-items: center;             /* Vertically center content */
+  padding: 10px 40px;              /* Extra horizontal padding */
+  box-sizing: border-box;          /* Include padding in element's total width */
+}
+
+/* Navigation menu list */
+.navbar ul {
+  display: flex;                    /* Horizontal layout of list items */
+  justify-content: center;         /* Center items horizontally */
+  list-style-type: none;           /* Remove default bullets */
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual navigation items */
+.navbar ul li {
+  margin: 0 20px;                  /* Spacing between menu items */
+}
+
+/* Navigation links */
+.navbar ul li a {
+  color: #00ff00;                  /* Matrix-style green */
+  text-decoration: none;           /* Remove underline */
+  font-family: 'Courier New', Courier, monospace; /* Terminal-style font */
+  font-size: 1.2rem;               /* Text size */
+  text-shadow: 0 0 6px #00ff00;    /* Glow effect */
+  transition: color 0.3s ease;     /* Smooth color change on hover */
+}
+
+/* Hover effect for links */
+.navbar ul li a:hover {
+  color: #ffcc00;                  /* Yellow on hover */
+  text-shadow: 0 0 8px #ffcc00;    /* Stronger glow */
+}
+
+/* Custom nav list for better control */
+.nav-links {
+  display: flex;                   /* Display links inline */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Spacing for custom nav items */
+.nav-links li {
+  margin: 0 15px;
+}
+
+/* Clock display in the navbar */
+#clock {
+  color: #00ff00;                  /* Green color matching theme */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px #00ff00;    /* Glow effect */
+  white-space: nowrap;            /* Prevents the clock from wrapping to next line */
+}

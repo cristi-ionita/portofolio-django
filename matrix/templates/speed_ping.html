@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Speed & Ping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="{% static 'matrix/speed_ping.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Network Speed & Ping Results</h1>
+
+    <!-- Display error message if present -->
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <!-- Speedtest Results -->
+    <div class="results">
+        <div class="card">
+            <h2>Download Speed</h2>
+            <p>{{ result.download|default:"Not available" }}</p>
+        </div>
+        <div class="card">
+            <h2>Upload Speed</h2>
+            <p>{{ result.upload|default:"Not available" }}</p>
+        </div>
+        <div class="card">
+            <h2>Ping (Speedtest)</h2>
+            <p>{{ result.ping_speedtest|default:"Not available" }}</p>
+        </div>
+    </div>
+
+    <!-- Raw Ping Output -->
+    <div class="ping-section">
+        <h2>Ping (Full Output)</h2>
+        <pre>{{ result.ping|default:"No ping data" }}</pre>
+    </div>
+
+    <!-- Rerun Button -->
+    <form method="get">
+        <button type="submit">🔁 Rerun Test</button>
+    </form>
+</div>
+
+</body>
+</html>

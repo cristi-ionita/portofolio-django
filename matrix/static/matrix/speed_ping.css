@@ -1,0 +1,116 @@
+/* Base styling for the entire page */
+body {
+    margin: 0;  /* Removes default browser margin */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Clean, modern sans-serif font */
+    background-color: #121212;  /* Dark theme background */
+    color: #eaeaea;  /* Light text for contrast */
+    padding: 20px;  /* Page padding */
+}
+
+/* Main container for content */
+.container {
+    max-width: 900px;  /* Limits content width for readability */
+    margin: auto;  /* Centers the container horizontally */
+    background-color: #1e1e1e;  /* Slightly lighter dark background */
+    border-radius: 12px;  /* Rounded corners */
+    padding: 30px;  /* Inner spacing */
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);  /* Orange glow shadow */
+}
+
+/* Page title */
+h1 {
+    text-align: center;  /* Centers the heading */
+    color: #ffa500;  /* Bright orange */
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #ff8c00;  /* Subtle glow */
+}
+
+/* Layout for results cards */
+.results {
+    display: flex;  /* Horizontal layout */
+    justify-content: space-around;  /* Even spacing between cards */
+    gap: 20px;  /* Space between flex items */
+    flex-wrap: wrap;  /* Wrap items on smaller screens */
+    margin-bottom: 30px;
+}
+
+/* Individual result card */
+.card {
+    background-color: #292929;  /* Dark gray background */
+    border-radius: 10px;  /* Rounded corners */
+    padding: 20px;  /* Inner padding */
+    flex: 1;  /* Allows flexibility in layout */
+    min-width: 200px;  /* Ensures minimum width */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);  /* Orange highlight */
+}
+
+/* Card title */
+.card h2 {
+    color: #ffb84d;  /* Warm orange */
+}
+
+/* Card result value */
+.card p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #00ffcc;  /* Bright teal color */
+}
+
+/* Section for displaying ping or terminal output */
+.ping-section {
+    background-color: #1c1c1c;  /* Slightly lighter than body */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 255, 115, 0.2);  /* Soft green glow */
+}
+
+/* Section title */
+.ping-section h2 {
+    margin-bottom: 10px;
+    color: #7fffd4;  /* Aquamarine */
+}
+
+/* Code or terminal block */
+pre {
+    background-color: #111;  /* Very dark background for contrast */
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;  /* Enables horizontal scrolling if needed */
+    font-size: 0.9rem;
+    color: #ddd;  /* Light text for readability */
+}
+
+/* General button styling */
+button {
+    display: block;  /* Allows centering with margin auto */
+    margin: auto;
+    padding: 12px 24px;
+    background-color: #ff9500;  /* Bright orange */
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #141313;  /* Dark text for contrast */
+    transition: 0.3s;  /* Smooth hover transitions */
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);  /* Glow effect */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #ff6f00;  /* Darker orange */
+    box-shadow: 0 0 10px #ff9500;  /* Highlight glow */
+}
+
+/* Error message styling */
+.error {
+    background-color: #a00000;  /* Bold red background */
+    color: white;
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}

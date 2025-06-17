@@ -1,0 +1,49 @@
+/* Container for project buttons, fixed position on the screen */
+.project-buttons {
+  position: fixed;                /* Keeps it visible even when scrolling */
+  top: 100px;                     /* Distance from the top of the viewport */
+  left: 20px;                     /* Distance from the left edge */
+  display: flex;                  /* Use Flexbox layout */
+  flex-direction: column;        /* Stack buttons vertically */
+  gap: 30px;                      /* Space between buttons */
+  font-family: 'Courier New', Courier, monospace;  /* Retro/tech-style font */
+  color: #00ff00;                 /* Matrix green color */
+  z-index: 100;                   /* Appears above most elements */
+}
+
+/* Container for a single project */
+.project {
+  text-align: center;             /* Center-aligns project content */
+}
+
+/* Project title styling */
+.project h3 {
+  margin-bottom: 8px;             /* Space below the heading */
+  font-size: 1.2rem;              /* Heading size */
+  color: #00ff00;                 /* Green color for consistency */
+  text-shadow: 0 0 6px #00ff00;   /* Glow effect for the title */
+}
+
+/* Button styling for each project */
+.project button {
+  background-color: #00ff00;      /* Bright green background */
+  border: 2px solid #00cc00;      /* Slightly darker green border */
+  color: #003300;                 /* Dark green text color for contrast */
+  font-weight: 700;               /* Bold text */
+  padding: 10px 18px;             /* Inner spacing */
+  border-radius: 6px;             /* Rounded corners */
+  cursor: pointer;                /* Pointer cursor on hover */
+  box-shadow: 0 4px 6px rgba(0, 204, 0, 0.4);  /* Soft glow around button */
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    box-shadow 0.3s ease;         /* Smooth transitions on hover */
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* Button hover effect */
+.project button:hover {
+  background-color: #006600;      /* Darker green background on hover */
+  color: #d4ff00;                 /* Bright yellow-green text on hover */
+  box-shadow: 0 6px 10px rgba(208, 255, 33, 0.7); /* Stronger glow effect */
+}
